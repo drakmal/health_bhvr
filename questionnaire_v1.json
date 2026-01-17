@@ -1,0 +1,244 @@
+{
+  "version": "1.0",
+  "languages": ["EN", "BM"],
+  "modules": [
+    {
+      "id": "profile",
+      "title": { "EN": "Basic Info", "BM": "Maklumat Asas" },
+      "questions": [
+        {
+          "id": "age_group",
+          "type": "single",
+          "required": true,
+          "label": { "EN": "Age group", "BM": "Kumpulan umur" },
+          "options": [
+            { "value": "<18", "label": { "EN": "<18", "BM": "<18" } },
+            { "value": "18-24", "label": { "EN": "18–24", "BM": "18–24" } },
+            { "value": "25-44", "label": { "EN": "25–44", "BM": "25–44" } },
+            { "value": "45-59", "label": { "EN": "45–59", "BM": "45–59" } },
+            { "value": ">=60", "label": { "EN": "≥60", "BM": "≥60" } }
+          ]
+        },
+        {
+          "id": "sex",
+          "type": "single",
+          "required": true,
+          "label": { "EN": "Sex", "BM": "Jantina" },
+          "options": [
+            { "value": "male", "label": { "EN": "Male", "BM": "Lelaki" } },
+            { "value": "female", "label": { "EN": "Female", "BM": "Perempuan" } }
+          ]
+        },
+        {
+          "id": "district",
+          "type": "text",
+          "required": false,
+          "label": { "EN": "District (optional)", "BM": "Daerah (pilihan)" }
+        },
+        {
+          "id": "community",
+          "type": "text",
+          "required": false,
+          "label": { "EN": "Community (optional)", "BM": "Komuniti (pilihan)" }
+        },
+        {
+          "id": "reminders_opt_in",
+          "type": "single",
+          "required": true,
+          "label": { "EN": "Do you want reminders?", "BM": "Mahu peringatan?" },
+          "options": [
+            { "value": "yes", "label": { "EN": "Yes", "BM": "Ya" } },
+            { "value": "no", "label": { "EN": "No", "BM": "Tidak" } }
+          ]
+        },
+        {
+          "id": "reminders_channel",
+          "type": "single",
+          "required": false,
+          "label": { "EN": "Choose reminder channel", "BM": "Pilih saluran peringatan" },
+          "show_if": { "reminders_opt_in": "yes" },
+          "options": [
+            { "value": "telegram", "label": { "EN": "Telegram", "BM": "Telegram" } },
+            { "value": "sms", "label": { "EN": "SMS", "BM": "SMS" } },
+            { "value": "whatsapp", "label": { "EN": "WhatsApp", "BM": "WhatsApp" } }
+          ]
+        },
+        {
+          "id": "reminders_frequency",
+          "type": "single",
+          "required": false,
+          "label": { "EN": "Reminder frequency", "BM": "Kekerapan peringatan" },
+          "show_if": { "reminders_opt_in": "yes" },
+          "options": [
+            { "value": "daily", "label": { "EN": "Daily", "BM": "Harian" } },
+            { "value": "weekly", "label": { "EN": "Weekly", "BM": "Mingguan" } }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "smoking",
+      "title": { "EN": "Smoking", "BM": "Merokok" },
+      "questions": [
+        {
+          "id": "smoking_status",
+          "type": "single",
+          "required": true,
+          "label": {
+            "EN": "Which best describes you?",
+            "BM": "Yang manakah paling sesuai?"
+          },
+          "options": [
+            { "value": "daily", "label": { "EN": "I smoke daily", "BM": "Saya merokok setiap hari" } },
+            { "value": "sometimes", "label": { "EN": "I smoke sometimes", "BM": "Saya merokok kadang-kadang" } },
+            { "value": "ex", "label": { "EN": "I used to smoke (now stopped)", "BM": "Saya pernah merokok (sudah berhenti)" } },
+            { "value": "never", "label": { "EN": "I never smoked", "BM": "Saya tidak pernah merokok" } }
+          ]
+        },
+        {
+          "id": "smoking_ttfc",
+          "type": "single",
+          "required": false,
+          "show_if": { "smoking_status": ["daily", "sometimes"] },
+          "label": { "EN": "Time to first cigarette after waking?", "BM": "Masa rokok pertama selepas bangun tidur?" },
+          "options": [
+            { "value": "within_5", "score": 3, "label": { "EN": "Within 5 minutes", "BM": "Dalam 5 minit" } },
+            { "value": "6_30", "score": 2, "label": { "EN": "6–30 minutes", "BM": "6–30 minit" } },
+            { "value": "31_60", "score": 1, "label": { "EN": "31–60 minutes", "BM": "31–60 minit" } },
+            { "value": "after_60", "score": 0, "label": { "EN": "After 60 minutes", "BM": "Selepas 60 minit" } }
+          ]
+        },
+        {
+          "id": "smoking_cigs_per_day",
+          "type": "single",
+          "required": false,
+          "show_if": { "smoking_status": ["daily", "sometimes"] },
+          "label": { "EN": "How many cigarettes per day?", "BM": "Berapa batang rokok sehari?" },
+          "options": [
+            { "value": "1_10", "score": 0, "label": { "EN": "1–10", "BM": "1–10" } },
+            { "value": "11_20", "score": 1, "label": { "EN": "11–20", "BM": "11–20" } },
+            { "value": "21_30", "score": 2, "label": { "EN": "21–30", "BM": "21–30" } },
+            { "value": "31_plus", "score": 3, "label": { "EN": "31 or more", "BM": "31 atau lebih" } }
+          ]
+        },
+        {
+          "id": "smoking_intention",
+          "type": "single",
+          "required": true,
+          "show_if": { "smoking_status": ["daily", "sometimes", "ex"] },
+          "label": { "EN": "Are you thinking about quitting smoking?", "BM": "Adakah anda berfikir untuk berhenti merokok?" },
+          "options": [
+            { "value": "no_6mo", "label": { "EN": "Not in next 6 months", "BM": "Tidak dalam 6 bulan akan datang" } },
+            { "value": "yes_6mo", "label": { "EN": "Within next 6 months", "BM": "Dalam 6 bulan akan datang" } },
+            { "value": "yes_30d", "label": { "EN": "Within next 30 days", "BM": "Dalam 30 hari akan datang" } },
+            { "value": "already_quit", "label": { "EN": "I already quit", "BM": "Saya sudah berhenti" } }
+          ]
+        },
+        {
+          "id": "smoking_attempt_12m",
+          "type": "single",
+          "required": true,
+          "show_if": { "smoking_status": ["daily", "sometimes"] },
+          "label": { "EN": "Tried to quit (≥24 hours) in last 12 months?", "BM": "Pernah cuba berhenti (≥24 jam) dalam 12 bulan lepas?" },
+          "options": [
+            { "value": "yes", "label": { "EN": "Yes", "BM": "Ya" } },
+            { "value": "no", "label": { "EN": "No", "BM": "Tidak" } }
+          ]
+        },
+        {
+          "id": "smoking_quit_duration",
+          "type": "single",
+          "required": false,
+          "show_if": { "smoking_status": "ex" },
+          "label": { "EN": "How long since you stopped smoking?", "BM": "Berapa lama sejak anda berhenti merokok?" },
+          "options": [
+            { "value": "<6m", "label": { "EN": "Less than 6 months", "BM": "Kurang 6 bulan" } },
+            { "value": ">=6m", "label": { "EN": "6 months or more", "BM": "6 bulan atau lebih" } }
+          ]
+        },
+        {
+          "id": "smoking_triggers",
+          "type": "multi",
+          "required": false,
+          "show_if": { "smoking_status": ["daily", "sometimes"] },
+          "label": { "EN": "What triggers your smoking?", "BM": "Apakah pencetus merokok anda?" },
+          "options": [
+            { "value": "stress", "label": { "EN": "Stress", "BM": "Stres" } },
+            { "value": "after_meals", "label": { "EN": "After meals", "BM": "Selepas makan" } },
+            { "value": "friends", "label": { "EN": "With friends", "BM": "Bersama kawan" } },
+            { "value": "driving", "label": { "EN": "Driving", "BM": "Memandu" } },
+            { "value": "boredom", "label": { "EN": "Boredom", "BM": "Bosan" } },
+            { "value": "other", "label": { "EN": "Other", "BM": "Lain-lain" } }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "alcohol",
+      "title": { "EN": "Alcohol", "BM": "Alkohol" },
+      "questions": [
+        {
+          "id": "auditc_q1",
+          "type": "single",
+          "required": true,
+          "label": { "EN": "How often do you drink alcohol?", "BM": "Berapa kerap anda minum alkohol?" },
+          "options": [
+            { "value": "never", "score": 0, "label": { "EN": "Never", "BM": "Tidak pernah" } },
+            { "value": "monthly_or_less", "score": 1, "label": { "EN": "Monthly or less", "BM": "Sebulan sekali atau kurang" } },
+            { "value": "2_4_month", "score": 2, "label": { "EN": "2–4 times a month", "BM": "2–4 kali sebulan" } },
+            { "value": "2_3_week", "score": 3, "label": { "EN": "2–3 times a week", "BM": "2–3 kali seminggu" } },
+            { "value": "4plus_week", "score": 4, "label": { "EN": "4+ times a week", "BM": "4+ kali seminggu" } }
+          ]
+        },
+        {
+          "id": "auditc_q2",
+          "type": "single",
+          "required": true,
+          "label": { "EN": "How many drinks on a typical day?", "BM": "Berapa gelas/minuman pada hari biasa?" },
+          "options": [
+            { "value": "1_2", "score": 0, "label": { "EN": "1–2", "BM": "1–2" } },
+            { "value": "3_4", "score": 1, "label": { "EN": "3–4", "BM": "3–4" } },
+            { "value": "5_6", "score": 2, "label": { "EN": "5–6", "BM": "5–6" } },
+            { "value": "7_9", "score": 3, "label": { "EN": "7–9", "BM": "7–9" } },
+            { "value": "10plus", "score": 4, "label": { "EN": "10 or more", "BM": "10 atau lebih" } }
+          ]
+        },
+        {
+          "id": "auditc_q3",
+          "type": "single",
+          "required": true,
+          "label": { "EN": "How often 6+ drinks on one occasion?", "BM": "Berapa kerap minum 6+ minuman sekali?" },
+          "options": [
+            { "value": "never", "score": 0, "label": { "EN": "Never", "BM": "Tidak pernah" } },
+            { "value": "less_monthly", "score": 1, "label": { "EN": "Less than monthly", "BM": "Kurang dari sebulan sekali" } },
+            { "value": "monthly", "score": 2, "label": { "EN": "Monthly", "BM": "Sebulan sekali" } },
+            { "value": "weekly", "score": 3, "label": { "EN": "Weekly", "BM": "Mingguan" } },
+            { "value": "daily", "score": 4, "label": { "EN": "Daily/almost daily", "BM": "Harian/hampir harian" } }
+          ]
+        },
+        {
+          "id": "alcohol_intention",
+          "type": "single",
+          "required": true,
+          "label": { "EN": "Are you thinking about reducing alcohol?", "BM": "Adakah anda berfikir untuk kurangkan alkohol?" },
+          "options": [
+            { "value": "no_6mo", "label": { "EN": "Not in next 6 months", "BM": "Tidak dalam 6 bulan akan datang" } },
+            { "value": "yes_6mo", "label": { "EN": "Within next 6 months", "BM": "Dalam 6 bulan akan datang" } },
+            { "value": "yes_30d", "label": { "EN": "Within next 30 days", "BM": "Dalam 30 hari akan datang" } },
+            { "value": "already_reduced", "label": { "EN": "I already reduced/stopped", "BM": "Saya sudah kurangkan/berhenti" } }
+          ]
+        },
+        {
+          "id": "alcohol_cutdown_3m",
+          "type": "single",
+          "required": true,
+          "label": { "EN": "Tried to cut down in last 3 months?", "BM": "Pernah cuba kurangkan dalam 3 bulan lepas?" },
+          "options": [
+            { "value": "yes", "label": { "EN": "Yes", "BM": "Ya" } },
+            { "value": "no", "label": { "EN": "No", "BM": "Tidak" } }
+          ]
+        }
+      ]
+    }
+  ]
+}
