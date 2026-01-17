@@ -1,6 +1,4 @@
-const API_BASE = window.location.hostname === "localhost" 
-  ? "http://localhost:3000" 
-  : window.location.origin;
+const API_BASE = "http://localhost:3000";
 
 document.querySelector("#app").innerHTML = `
   <div style="max-width:520px;margin:24px auto;font-family:system-ui;padding:16px;">
